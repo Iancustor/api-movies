@@ -21,7 +21,6 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try {
-    await request.json();
     const allMovieCategories = await db.movieCategory.findMany();
     // console.log(allMovies);
     return NextResponse.json(allMovieCategories);
