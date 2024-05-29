@@ -12,3 +12,21 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+
+model Movie {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  thumbnail    String
+  trailer      String
+  downloadLink String
+  categoryId   String       @db.ObjectId
+  movieCategory MovieCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model MovieCategory {
+  id   String               @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  slug String?
+  movies Movie[]
+}
