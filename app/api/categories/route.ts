@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const { slug, name } = await request.json();
-    console.log(slug, name);
+    // console.log(slug, name);
 
     const newMovieCategory = await db.movieCategory.create({
       data: {
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     console.log(newMovieCategory);
     return NextResponse.json(newMovieCategory);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
